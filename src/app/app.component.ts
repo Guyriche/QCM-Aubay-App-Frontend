@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NgcCookieConsentService } from 'ngx-cookieconsent';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy{
   title = 'Aubay QCM System Management !';
+
+  constructor(private ngcookieConsentService: NgcCookieConsentService){}
+
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
+  }
+
+  ngOnInit(): void {
+    this.ngcookieConsentService.init(this.ngcookieConsentService.getConfig())
+  }
+
 }

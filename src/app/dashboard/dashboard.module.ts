@@ -5,13 +5,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutes } from './dashboard.routing';
 import { MaterialModule } from '../shared/material.module';
+import { NgcCookieConsentModule } from 'ngx-cookieconsent';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
-    RouterModule.forChild(DashboardRoutes)
+    RouterModule.forChild(DashboardRoutes),
+    NgcCookieConsentModule
   ],
   declarations: [DashboardComponent]
 })

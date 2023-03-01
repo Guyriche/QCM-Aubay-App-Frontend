@@ -1,4 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { NgcCookieConsentService } from 'ngx-cookieconsent';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { DashboardService } from '../services/dashboard.service';
 import { SnackbarService } from '../services/snackbar.service';
@@ -17,7 +18,9 @@ export class DashboardComponent implements AfterViewInit {
 
 	constructor(private dashbordService: DashboardService,
 		private ngxService: NgxUiLoaderService, 
-		private snackbarService: SnackbarService) {
+		private snackbarService: SnackbarService,
+		private ccService: NgcCookieConsentService) {
+			this.ccService.init(this.ccService.getConfig())
 			this.ngxService.start();
 			this.dashboardData();
 	}

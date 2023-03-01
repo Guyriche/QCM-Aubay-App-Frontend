@@ -16,6 +16,7 @@ import { ManageQuestionComponent } from './manage-question/manage-question.compo
 import { QuestionComponent } from './dialog/question/question.component';
 import { PropositionComponent } from './dialog/proposition/proposition.component';
 import { ManagePropositionComponent } from './manage-proposition/manage-proposition.component';
+import { NgcCookieConsentModule } from 'ngx-cookieconsent';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ManagePropositionComponent } from './manage-proposition/manage-proposit
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    CdkTableModule
+    CdkTableModule,
+    NgcCookieConsentModule
     
   ],
   providers: []
