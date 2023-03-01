@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+        <span>{{dialogData.action}} Theme</span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="themeForm">
+        <div class="form-group" fxLayout="column">
+            <!--<div fxLayout="row-wrap">-->
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Wording</mat-label>
+                    <input matInput formControlName="wording" required>
+                    <mat-error *ngIf="themeForm.controls.wording.touched && themeForm.controls.wording.invalid">
+                        <span *ngIf="themeForm.controls.wording.errors.required">This field is Mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Description</mat-label>
+                    <input matInput formControlName="description" required>
+                    <mat-error *ngIf="themeForm.controls.description.touched && themeForm.controls.description.invalid">
+                        <span *ngIf="themeForm.controls.description.errors.required">This field is Mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+            <!--</div>-->
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()"
+        [disabled]="!(themeForm.valid && themeForm.dirty)">
+        <mat-icon>save</mat-icon> {{action}}
+    </button>
+
+    <button mat-raised-button color="warn" mat-dialog-close>
+        <mat-icon>cancel</mat-icon> Close
+    </button>
+</mat-dialog-actions>

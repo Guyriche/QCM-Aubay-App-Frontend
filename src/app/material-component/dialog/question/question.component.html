@@ -1,0 +1,55 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+        <span>{{dialogData.action}} Question</span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="questionForm">
+        <div class="form-group" fxLayout="column">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Num Question</mat-label>
+                    <input matInput formControlName="numQuestion" required>
+                    <mat-error *ngIf="questionForm.controls.numQuestion.touched && questionForm.controls.numQuestion.invalid">
+                        <span *ngIf="questionForm.controls.numQuestion.errors.required">This field is Mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Content Question</mat-label>
+                    <input matInput formControlName="content_question" required>
+                    <mat-error *ngIf="questionForm.controls.content_question.touched && questionForm.controls.content_question.invalid">
+                        <span *ngIf="questionForm.controls.content_question.errors.required">This field is Mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Difficulty</mat-label>
+                    <mat-select  formControlName="difficulty" required>
+                        <mat-option value="LOW">LOW</mat-option>
+                        <mat-option value="MEDIUM">MEDIUM</mat-option>
+                        <mat-option value="HIGH">HIGH</mat-option>
+                    </mat-select>
+                    <!--<input matInput formControlName="difficulty" required>-->
+                    <mat-error *ngIf="questionForm.controls.difficulty.touched && questionForm.controls.difficulty.invalid">
+                        <span *ngIf="questionForm.controls.difficulty.errors.required">This field is Mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()"
+        [disabled]="!(questionForm.valid && questionForm.dirty)">
+        <mat-icon>save</mat-icon> {{action}}
+    </button>
+
+    <button mat-raised-button color="warn" mat-dialog-close>
+        <mat-icon>cancel</mat-icon> Close
+    </button>
+</mat-dialog-actions>

@@ -1,0 +1,38 @@
+<body>
+    <mat-card>
+        <b><span>Dashboard</span></b>
+    </mat-card>
+    <b>
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <div class="container">
+                        <h2 class="title">Total Theme:</h2>
+                        <h2 class="title">{{data?.theme}}</h2>
+                        <p><button class="button" [routerLink]="['/aubaytest/theme']">View Themes</button></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <div class="container">
+                        <h2 class="title">Total Question:</h2>
+                        <h2 class="title">{{data?.question}}</h2>
+                        <p><button class="button" [routerLink]="['/aubaytest/question']">View Questions</button></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <div class="container">
+                        <h2 class="title">Total Response:</h2>
+                        <h2 class="title">{{data?.question}}</h2>
+                        <p><button class="button" [routerLink]="['/aubaytest/proposition']">View Responses</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </b>
+</body>

@@ -1,0 +1,59 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+        <span>{{dialogData.action}} Proposition</span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="propositionForm">
+        <div class="form-group" fxLayout="column">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Num Proposition</mat-label>
+                    <input matInput formControlName="num_proposition" required>
+                    <mat-error *ngIf="propositionForm.controls.num_proposition.touched && propositionForm.controls.num_proposition.invalid">
+                        <span *ngIf="propositionForm.controls.num_proposition.errors.required">This field is Mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Content Proposition</mat-label>
+                    <input matInput formControlName="content_proposition" required>
+                    <mat-error *ngIf="propositionForm.controls.content_proposition.touched && propositionForm.controls.content_proposition.invalid">
+                        <span *ngIf="propositionForm.controls.content_proposition.errors.required">This field is Mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Status Proposition</mat-label>
+                    <input matInput formControlName="status_proposition" required>
+                    <mat-error *ngIf="propositionForm.controls.status_proposition.touched && propositionForm.controls.status_proposition.invalid">
+                        <span *ngIf="propositionForm.controls.status_proposition.errors.required">This field is Mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Select Questions</mat-label>
+                    <mat-select formControlName="questionId" >
+                        <mat-option *ngFor="let question of questions" [value]="question.id">
+                            {{question.content_question}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()"
+        [disabled]="!(propositionForm.valid && propositionForm.dirty)">
+        <mat-icon>save</mat-icon> {{action}}
+    </button>
+
+    <button mat-raised-button color="warn" mat-dialog-close>
+        <mat-icon>cancel</mat-icon> Close
+    </button>
+</mat-dialog-actions>
