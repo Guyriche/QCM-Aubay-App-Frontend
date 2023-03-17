@@ -1,7 +1,7 @@
 <mat-card>
-    <b><span>Manage Question</span></b>
+    <b><span>Manage QCM</span></b>
     <button mat-flat-button color="primary" class="float-right" (click)="handleAddAction()">
-        <mat-icon>add_circle</mat-icon> Add
+        <mat-icon>add_circle</mat-icon> New QCM
     </button>
 </mat-card>
 <hr>
@@ -11,33 +11,34 @@
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" #input>
     </mat-form-field>
-
-    <mat-form-field appearance="outline" fxFlex>
-        <mat-label>Theme</mat-label>
-        <mat-select formControlName="theme" (selectionChange)="getThemeById($event.value)">
-            <mat-option *ngFor="let theme of themes" [value]="theme">
-                {{theme.wording}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
 </mat-card>
 <hr>
 
 <div class="responsive_table">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <ng-container matColumnDef="numQuestion">
-            <th mat-header-cell *matHeaderCellDef>Num Question</th>
-            <td mat-cell *matCellDef="let element"> {{element.numQuestion}} </td>
+        <ng-container matColumnDef="title_qcm">
+            <th mat-header-cell *matHeaderCellDef>Title</th>
+            <td mat-cell *matCellDef="let element">{{element.title_qcm}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="content_question">
-            <th mat-header-cell *matHeaderCellDef>Content Question</th>
-            <td mat-cell *matCellDef="let element">{{element.content_question}}</td>
+        <ng-container matColumnDef="description_qcm">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let element">{{element.description_qcm}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="difficulty">
+        <ng-container matColumnDef="difficulty_qcm">
             <th mat-header-cell *matHeaderCellDef>Difficulty</th>
-            <td mat-cell *matCellDef="let element">{{element.difficulty}}</td>
+            <td mat-cell *matCellDef="let element">{{element.difficulty_qcm}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="duration_qcm">
+            <th mat-header-cell *matHeaderCellDef>Duration</th>
+            <td mat-cell *matCellDef="let element">{{element.duration_qcm}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="num_qcm">
+            <th mat-header-cell *matHeaderCellDef>Num QCM</th>
+            <td mat-cell *matCellDef="let element">{{element.num_qcm}}</td>
         </ng-container>
 
         <ng-container matColumnDef="edit">
@@ -49,6 +50,10 @@
 
                 <button mat-icon-button color="primary" matTooltip="Delete" (click)="handleDeleteAction(element)">
                     <mat-icon>delete</mat-icon>
+                </button>
+
+                <button mat-icon-button color="primary" matTooltip="Add Question" (click)="handleAddQuestionsAction(element)">
+                    <mat-icon>add_circle</mat-icon>
                 </button>
             </td>
         </ng-container>

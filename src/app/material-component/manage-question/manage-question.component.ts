@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -6,6 +7,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { PropositionService } from 'src/app/services/proposition.service';
 import { QuestionService } from 'src/app/services/question.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
+import { ThemeService } from 'src/app/services/theme.service';
 import { GlobaConstants } from 'src/app/shared/global-constants';
 import { ConfirmationComponent } from '../dialog/confirmation/confirmation.component';
 import { QuestionComponent } from '../dialog/question/question.component';
@@ -21,9 +23,16 @@ export class ManageQuestionComponent implements OnInit{
 
   displayedColumns: string[] = ['numQuestion', 'content_question', 'difficulty', 'edit'];
   dataSource:any;
+  manageQuestionForm:any = FormGroup;
+  themes:any = [];
+  id:any;
+  theme:any;
+
   responseMessage:any;
 
   constructor(private questionService: QuestionService,
+    private themeService: ThemeService,
+    private formBuilder: FormBuilder,
     private ngxService: NgxUiLoaderService,
     private dialog: MatDialog,
     private snackbarService: SnackbarService,
@@ -33,12 +42,16 @@ export class ManageQuestionComponent implements OnInit{
   ngOnInit(): void {
 
     this.ngxService.start();
-    this.tableDataQuestion();
+    this.getThemes();
+    this.manageQuestionForm = this.formBuilder.group({
+      theme:[null, [Validators.required]]
+    })
+    //this.tableDataQuestion();
   }
 
-  tableDataQuestion(){
+  tableDataQuestion(id:any){
     
-    this.questionService.getQuestion().subscribe({
+    this.questionService.getQuestionByThemeId(id).subscribe({
       next: (response:any)=>{
         this.ngxService.stop();
         this.dataSource = new MatTableDataSource(response);
@@ -46,6 +59,47 @@ export class ManageQuestionComponent implements OnInit{
       error: (error:any)=>{
         this.ngxService.stop();
         console.log(error.error?.message);
+        if(error.error?.message){
+          this.responseMessage = error.error?.message;
+        }
+        else{
+          this.responseMessage = GlobaConstants.genericError;
+        }
+        this.snackbarService.openSnackbar(this.responseMessage, GlobaConstants.error);
+      }
+    })
+  }
+
+  getThemes(){
+    this.themeService.getThemes().subscribe({
+      next:(response:any)=>{
+        this.ngxService.stop();
+        this.themes = response;
+      },
+      error:(error:any)=>{
+        this.ngxService.stop();
+        console.log(error);
+        if(error.error?.message){
+          this.responseMessage = error.error?.message;
+        }
+        else{
+          this.responseMessage = GlobaConstants.genericError;
+        }
+        this.snackbarService.openSnackbar(this.responseMessage, GlobaConstants.error);
+      }
+    })
+  }
+
+  getThemeById(values:any){
+    this.themeService.getThemeById(values.id).subscribe({
+      next:(response:any)=>{
+        this.theme = response;
+        this.tableDataQuestion(this.theme.id);
+        console.log(this.theme.questionId);
+      },
+      error:(error:any)=>{
+        this.ngxService.stop();
+        console.log(error);
         if(error.error?.message){
           this.responseMessage = error.error?.message;
         }
@@ -73,7 +127,7 @@ export class ManageQuestionComponent implements OnInit{
       dialogRef.close();
     });
     const sub = dialogRef.componentInstance.onAddQuestion.subscribe((response)=>{
-      this.tableDataQuestion();
+      this.tableDataQuestion(this.theme.id);
     })
   }
 
@@ -89,7 +143,7 @@ export class ManageQuestionComponent implements OnInit{
       dialogRef.close();
     });
     const sub = dialogRef.componentInstance.onEditQuestion.subscribe((response)=>{
-      this.tableDataQuestion();
+      this.tableDataQuestion(this.theme.id);
     })
   }
 
@@ -113,7 +167,7 @@ export class ManageQuestionComponent implements OnInit{
     this.questionService.delete(id).subscribe({
       next:(response:any)=>{
         this.ngxService.stop();
-        this.tableDataQuestion();
+        this.tableDataQuestion(id);
         this.responseMessage = response?.message;
         this.snackbarService.openSnackbar(this.responseMessage, "success");
       },

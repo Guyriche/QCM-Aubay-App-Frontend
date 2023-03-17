@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutes } from './dashboard.routing';
 import { MaterialModule } from '../shared/material.module';
 import { NgcCookieConsentModule } from 'ngx-cookieconsent';
+import { NgxTranslateModule } from '../translate/translate.module';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { NgcCookieConsentModule } from 'ngx-cookieconsent';
     MaterialModule,
     FlexLayoutModule,
     RouterModule.forChild(DashboardRoutes),
-    NgcCookieConsentModule
+    NgcCookieConsentModule,
+    NgxTranslateModule
   ],
   declarations: [DashboardComponent]
 })

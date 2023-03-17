@@ -1,6 +1,6 @@
 <mat-toolbar color="warn">
     <mat-toolbar-row fxLayout="row">
-        <span>Login</span>
+        <span>{{ "login.title" | translate }}</span>
         <span class="spacer"></span>
         <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
             <mat-icon>close</mat-icon>
@@ -12,22 +12,22 @@
     <form [formGroup]="loginForm">
         <div class="form-group" fxFlex fxLayout="column">
             <mat-form-field appearance="outline" fxFlex>
-                <mat-label>Email</mat-label>
+                <mat-label>{{ "login.loginForm.userName" | translate }}</mat-label>
                 <input matInput type="text" formControlName="email" class="form-control" required/>
                 <mat-error *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
-                  <span *ngIf="loginForm.controls.email.errors.required">This field is mendatory</span>
-                  <span *ngIf="loginForm.controls.email.errors.pattern">This field is invalid !</span>
+                  <span *ngIf="loginForm.controls.email.errors.required">{{ "login.loginForm.errorMandatory" | translate }}</span>
+                  <span *ngIf="loginForm.controls.email.errors.pattern">{{ "login.loginForm.errorInvalid" | translate }}</span>
                 </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline" fxFlex>
-                <mat-label>Password</mat-label>
+                <mat-label>{{ "login.loginForm.passWord" | translate }}</mat-label>
                 <input matInput type="password" formControlName="password" class="form-control" required [type]="hide ? 'password': 'text'"/>
                 <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria.pressed]="hide" >
                     <mat-icon>{{ hide ? 'visibility_off': 'visibility' }}</mat-icon>
                 </button>
                 <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
-                  <span *ngIf="loginForm.controls.password.errors.required">This field is mendatory</span>
+                  <span *ngIf="loginForm.controls.password.errors.required">{{ "login.loginForm.errorMandatory" | translate }}</span>
                 </mat-error>
             </mat-form-field>
         </div>
@@ -36,13 +36,13 @@
 
 <mat-dialog-actions align="end">
     <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()" [disabled]="!(loginForm.valid && loginForm.dirty)">
-        <mat-icon>login</mat-icon> Login
+        <mat-icon>login</mat-icon> {{ "login.loginForm.submit" | translate }}
     </button>
     <button mat-raised-button color="warn" mat-dialog-close>
-        <mat-icon>cancel</mat-icon> Close
+        <mat-icon>cancel</mat-icon> {{ "login.loginForm.close" | translate }}
     </button>
 </mat-dialog-actions>
 
 <mat-dialog-actions align="end">
-    <button mat-button color="warn" (click)="handleForgotPasswordAction()">Forgot Password ?</button>
+    <button mat-button color="warn" (click)="handleForgotPasswordAction()">{{ "login.loginForm.forgotPassword" | translate }}</button>
 </mat-dialog-actions>

@@ -2,22 +2,30 @@
         <div class="navbar">
             <img src="../../assets/images/Aubay_-_Logo.png" class="logo">
             <ul>
-                <li><a href="#">Dashboad</a></li>
-                <li><a (click)="handleSignupAction()">Signup</a></li>
-                <li><a (click)="handleLoginAction()">Login</a></li>
+                <li>
+                    <div class="dropdown">
+                        <button class="dropbtn">language</button>
+                        <div class="dropdown-content" *ngFor="let language of supportedLanguages">
+                            <li>
+                                <a (click)="changeSiteLanguage(language)">{{language}}</a>
+                            </li>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">{{ "home.navbar.li1" | translate }}</a></li>
+                <li><a (click)="handleSignupAction()">{{ "home.navbar.li2" | translate }}</a></li>
+                <li><a (click)="handleLoginAction()">{{ "home.navbar.li3" | translate }}</a></li>
             </ul>
         </div>
 
         <div class="content">
-            <h1>PASSER VOTRE ENTRETIEN<br> TECHNIQUE EN LIGNE</h1>
-            <p>Pour vos questions à choix uniques et à choix multiples, vous pouvez insérer des textes, des mots<br> ou des images
-                comme choix de réponses. Une fois votre question et vos
-                choix rédigés, <br>attribuez un coefficient en cas de bonne
-                réponse et décidez si tous les choix corrects sont exigés
-                ou non pour valider la réponse.</p>
+            <h1>{{ "home.content.h1a" | translate }}<br> {{ "home.content.h1b" | translate }}</h1>
+            <p>{{ "home.content.p1" | translate }}<br> {{ "home.content.p2" | translate }} 
+                <br>{{ "home.content.p3" | translate }}
+            </p>
             <div>
-                <button type="button" (click)="handleSignupAction()"><span></span>Signup</button>
-                <button type="button" (click)="handleLoginAction()"><span></span>Login</button>
+                <button type="button" (click)="handleSignupAction()"><span></span>{{ "home.navbar.li2" | translate }}</button>
+                <button type="button" (click)="handleLoginAction()"><span></span>{{ "home.navbar.li3" | translate }}</button>
             </div>
         </div>
     </div>

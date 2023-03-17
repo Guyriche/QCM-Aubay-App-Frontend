@@ -17,6 +17,11 @@ import { QuestionComponent } from './dialog/question/question.component';
 import { PropositionComponent } from './dialog/proposition/proposition.component';
 import { ManagePropositionComponent } from './manage-proposition/manage-proposition.component';
 import { NgcCookieConsentModule } from 'ngx-cookieconsent';
+import { ChangeLanguageComponent } from './dialog/change-language/change-language.component';
+import { NgxTranslateModule } from '../translate/translate.module';
+import { ManageQcmComponent } from './manage-qcm/manage-qcm.component';
+import { QcmComponent } from './dialog/qcm/qcm.component';
+import { QuestionQcmComponent } from './dialog/question-qcm/question-qcm.component';
 
 
 @NgModule({
@@ -28,7 +33,11 @@ import { NgcCookieConsentModule } from 'ngx-cookieconsent';
     ManageQuestionComponent,
     QuestionComponent,
     PropositionComponent,
-    ManagePropositionComponent
+    ManagePropositionComponent,
+    ChangeLanguageComponent,
+    ManageQcmComponent,
+    QcmComponent,
+    QuestionQcmComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +48,8 @@ import { NgcCookieConsentModule } from 'ngx-cookieconsent';
     ReactiveFormsModule,
     FlexLayoutModule,
     CdkTableModule,
-    NgcCookieConsentModule
+    NgcCookieConsentModule,
+    NgxTranslateModule
     
   ],
   providers: []

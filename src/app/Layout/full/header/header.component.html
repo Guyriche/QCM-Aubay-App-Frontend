@@ -6,7 +6,27 @@
     <mat-icon>password</mat-icon> Change Password
 </button>
 
+<button mat-menu-item (click)="changeLanguage()">
+    <mat-icon>translate</mat-icon> Change Language
+</button>
+
 <button mat-menu-item (click)="logout()">
     <mat-icon>exit_to_app</mat-icon> Logout
 </button>
+
+</mat-menu>
+
+<button mat-icon-button [matMenuTriggerFor]="menuLanguage" class="m-r-5">
+    <!--<i>{{siteLanguage}}</i>
+    <span class="caret"></span>-->
+    <mat-icon>translate</mat-icon>
+</button>
+<mat-menu #menuLanguage="matMenu">
+    <ng-container *ngFor="let language of languageList">
+        <li role="menuitem">
+            <button mat-menu-item (click)="changeSiteLanguage(language.code)">
+                <mat-icon>language</mat-icon> {{language.label}}
+            </button>
+        </li>
+        </ng-container>
 </mat-menu>

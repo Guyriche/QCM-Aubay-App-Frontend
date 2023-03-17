@@ -1,0 +1,87 @@
+{
+    "noConformPassword": "New Password & Confirm Password does not match.",
+    "errorInvalid": "This field is invalid !",
+    "errorMandatory": "This field is mendatory !",
+
+    "home":{
+        "navbar":{
+            "li1": "Dashboard",
+            "li2": "Signup",
+            "li3": "Login"
+        },
+        "content":{
+            "h1a": "TAKE YOUR INTERVIEW",
+            "h1b": "TECHNICAL ONLINE",
+            "p1": "For your single and multiple choice questions, you can insert text, words",
+            "p2": "or images as answer choices. Once you have written your question and choices are made,",
+            "p3": "assign a coefficient for correct answers and decide whether or not all correct choices are required to validate the answer. to validate the answer.",            
+            "li2": "Signup",
+            "li3": "Login"
+        }
+    },
+    "login":{
+        "title":"Login",
+        "loginForm":{
+            "userName": "Email",
+            "passWord": "Password",
+            "close":    "Cancel",
+            "submit":   "Login",
+            "forgotPassword": "Forgot Password ?",
+            "errorInvalid": "This field is invalid !",
+            "errorMandatory": "This field is mendatory !"
+        }
+    },
+    "signup":{
+        "title":"Signup",
+        "signupForm":{
+            "lastName":"Last Name",
+            "firstName":"First Name",
+            "email": "Email",
+            "passWord": "Password",
+            "confirmPassword":"Confirm Password",
+            "close":    "Cancel",
+            "submit":   "Signup",
+            "forgotPassword": "Forgot Password ?",
+            "errorInvalid": "This field is invalid !",
+            "noConformPassword": "New Password & Confirm Password does not match.",
+            "errorMandatory": "This field is mendatory !"
+        }
+    },
+    "forgotPassword":{
+        "title":"Forgot Password?",
+        "forgotPasswordForm":{
+            "email": "Email",
+            "close":    "Cancel",
+            "submit":   "Send Password",
+            "errorInvalid": "This field is invalid !",
+            "errorMandatory": "This field is mendatory !"
+        }
+    },
+    "changePassword":{
+        "title":"Change Password",
+        "changePasswordForm":{
+            "oldPassword": "Old Password",
+            "newPassword": "New Password",
+            "confirmPassword":"Confirm Password",
+            "close":    "Cancel",
+            "submit":   "Update",
+            "noConformPassword": "New Password & Confirm Password does not match.",
+            "errorInvalid": "This field is invalid !",
+            "errorMandatory": "This field is mendatory !"
+        }
+    },
+    "confirmation":{
+        "title": "Confirmation",
+        "message":"Are you sure Want to",
+        "submit": "Yes",
+        "close": "No"
+    },
+    "dashboard":{
+        "title": "Dashboard",
+        "theme":"Total Theme:",
+        "question": "Total Question:",
+        "qcm": "Total Qcm:",
+        "submit": "View"
+    }
+
+}

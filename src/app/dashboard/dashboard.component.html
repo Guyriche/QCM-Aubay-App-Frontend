@@ -1,15 +1,15 @@
 <body>
     <mat-card>
-        <b><span>Dashboard</span></b>
+        <b><span>{{ "dashboard.title" | translate }}</span></b>
     </mat-card>
     <b>
         <div class="row">
             <div class="column">
                 <div class="card">
                     <div class="container">
-                        <h2 class="title">Total Theme:</h2>
+                        <h2 class="title">{{ "dashboard.theme" | translate }}</h2>
                         <h2 class="title">{{data?.theme}}</h2>
-                        <p><button class="button" [routerLink]="['/aubaytest/theme']">View Themes</button></p>
+                        <p><button class="button" [routerLink]="['/aubaytest/theme']">{{ "dashboard.submit" | translate }}</button></p>
                     </div>
                 </div>
             </div>
@@ -17,9 +17,9 @@
             <div class="column">
                 <div class="card">
                     <div class="container">
-                        <h2 class="title">Total Question:</h2>
+                        <h2 class="title">{{ "dashboard.question" | translate }}</h2>
                         <h2 class="title">{{data?.question}}</h2>
-                        <p><button class="button" [routerLink]="['/aubaytest/question']">View Questions</button></p>
+                        <p><button class="button" [routerLink]="['/aubaytest/question']">{{ "dashboard.submit" | translate }}</button></p>
                     </div>
                 </div>
             </div>
@@ -27,9 +27,9 @@
             <div class="column">
                 <div class="card">
                     <div class="container">
-                        <h2 class="title">Total Response:</h2>
-                        <h2 class="title">{{data?.question}}</h2>
-                        <p><button class="button" [routerLink]="['/aubaytest/proposition']">View Responses</button></p>
+                        <h2 class="title">{{ "dashboard.qcm" | translate }}</h2>
+                        <h2 class="title">{{data?.qcm}}</h2>
+                        <p><button class="button" [routerLink]="['/aubaytest/qcm']">{{ "dashboard.submit" | translate }}</button></p>
                     </div>
                 </div>
             </div>

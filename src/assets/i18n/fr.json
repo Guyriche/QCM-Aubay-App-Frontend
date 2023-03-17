@@ -1,0 +1,86 @@
+{
+    "noConformPassword": "Le nouveau mot de passe et le mot de passe de confirmation ne correspondent pas.",
+    "errorInvalid": "Ce champ n'est pas valide !",
+    "errorMandatory": "Ce champ est obligatoire !",
+
+    "home":{
+        "navbar":{
+            "li1": "Tableau de bord",
+            "li2": "S'inscrire",
+            "li3": "Connexion"
+        },
+        "content":{
+            "h1a": "PASSER VOTRE ENTRETIEN",
+            "h1b": "TECHNIQUE EN LIGNE",
+            "p1": "Pour vos questions à choix unique ou multiple, vous pouvez insérer du texte, des mots, etc.",
+            "p2": "ou des images comme choix de réponse. Une fois que vous avez rédigé votre question et que les choix sont faits,",
+            "p3": "attribuer un coefficient pour les réponses correctes et décider si tous les choix corrects sont nécessaires ou non pour valider la réponse. pour valider la réponse.",            
+            "li2": "S'inscrire",
+            "li3": "Connexion"
+        }
+    },
+    "login":{
+        "title":"Connexion",
+        "loginForm":{
+            "userName": "Email",
+            "passWord": "Mot de passe",
+            "close":    "Annuler",
+            "submit":   "Connexion",
+            "forgotPassword": "Mot de passe oublié ?",
+            "errorInvalid": "Ce champ n'est pas valide !",
+            "errorMandatory": "Ce champ est obligatoire !"
+        }
+    },
+    "signup":{
+        "title":"S'inscrire",
+        "signupForm":{
+            "lastName":"Nom ",
+            "firstName":"Prenom",
+            "email": "Email",
+            "passWord": "Mot de passe",
+            "confirmPassword":"Confirmé Le Mot de passe",
+            "close":    "Annuler",
+            "submit":   "S'inscrire",
+            "forgotPassword": "Mot de passe oublié ?",
+            "errorInvalid": "Ce champ n'est pas valide !",
+            "noConformPassword": "Le nouveau mot de passe et le mot de passe de confirmation ne correspondent pas.",
+            "errorMandatory": "Ce champ est obligatoire !"
+        }
+    },
+    "forgotPassword":{
+        "title":"Mot de passe oublié ?",
+        "forgotPasswordForm":{
+            "email": "Email",
+            "close":    "Annuler",
+            "submit":   "envoyer L'Email",
+            "errorInvalid": "Ce champ n'est pas valide !",
+            "errorMandatory": "Ce champ est obligatoire !"
+        }
+    },
+    "changePassword":{
+        "title":"Changer Le Mot de passe",
+        "changePasswordForm":{
+            "oldPassword": "Ancien Mot de passe",
+            "newPassword": "Nouveau Mot de passe",
+            "confirmPassword":"Confirmé Le Mot de passe",
+            "close":    "Annuler",
+            "submit":   "Changer",
+            "noConformPassword": "Le nouveau mot de passe et le mot de passe de confirmation ne correspondent pas.",
+            "errorInvalid": "Ce champ n'est pas valide !",
+            "errorMandatory": "Ce champ est obligatoire !"
+        }
+    },
+    "confirmation":{
+        "title": "Confirmation",
+        "message":"Vous êtes sûr de vouloir",
+        "submit": "Oui",
+        "close": "Non"
+    },
+    "dashboard":{
+        "title": "Tableau De Bord",
+        "theme":"Themes Totals :",
+        "question": "Questions Totales :",
+        "qcm": "Total Qcm:",
+        "submit": "Voir"
+    }
+}

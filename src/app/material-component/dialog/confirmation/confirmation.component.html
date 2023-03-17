@@ -1,6 +1,6 @@
 <mat-toolbar color="warn">
     <mat-toolbar-row fxLayout="row">
-        <span>Confirmation</span>
+        <span>{{ "confirmation.title" | translate }}</span>
         <span class="spacer"></span>
         <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
             <mat-icon>close</mat-icon>
@@ -9,15 +9,15 @@
 </mat-toolbar>
 
 <mat-dialog-content class="mat-typography">
-    <h6>Are you sure Want to {{details.message}}</h6>
+    <h6>{{ "confirmation.message" | translate }} {{details.message}}</h6>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
     <button mat-raised-button color="primary" (click)="handleChangeAction()">
-        <mat-icon>check_circle</mat-icon> Yes
+        <mat-icon>check_circle</mat-icon> {{ "confirmation.submit" | translate }}
     </button>
 
     <button mat-raised-button color="warn" mat-dialog-close>
-        <mat-icon>cancel</mat-icon> No
+        <mat-icon>cancel</mat-icon> {{ "confirmation.close" | translate }}
     </button>
 </mat-dialog-actions>

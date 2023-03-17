@@ -1,0 +1,71 @@
+<mat-toolbar color="warn">
+    <mat-toolbar-row fxLayout="row">
+        <span>{{dialogData.action}} QCM</span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="qcmForm">
+        <div class="form-group" fxLayout="column">
+            <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title_qcm" required>
+                <mat-error *ngIf="qcmForm.controls.title_qcm.touched && qcmForm.controls.title_qcm.invalid">
+                    <span *ngIf="qcmForm.controls.title_qcm.errors.required">This field is Mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="description_qcm" required>
+                <mat-error *ngIf="qcmForm.controls.description_qcm.touched && qcmForm.controls.description_qcm.invalid">
+                    <span *ngIf="qcmForm.controls.description_qcm.errors.required">This field is Mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Duration</mat-label>
+                <input matInput formControlName="duration_qcm" required>
+                <mat-error *ngIf="qcmForm.controls.duration_qcm.touched && qcmForm.controls.duration_qcm.invalid">
+                    <span *ngIf="qcmForm.controls.duration_qcm.errors.required">This field is Mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" fxFlex>
+                <mat-label>num.QCM</mat-label>
+                <input matInput formControlName="num_qcm" required>
+                <mat-error *ngIf="qcmForm.controls.num_qcm.touched && qcmForm.controls.num_qcm.invalid">
+                    <span *ngIf="qcmForm.controls.num_qcm.errors.required">This field is Mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Difficulty</mat-label>
+                <mat-select  formControlName="difficulty_qcm" required>
+                    <mat-option value="LOW">LOW</mat-option>
+                    <mat-option value="MEDIUM">MEDIUM</mat-option>
+                    <mat-option value="HIGH">HIGH</mat-option>
+                </mat-select>
+                <!--<input matInput formControlName="difficulty" required>-->
+                <mat-error *ngIf="qcmForm.controls.difficulty_qcm.touched && qcmForm.controls.difficulty_qcm.invalid">
+                    <span *ngIf="qcmForm.controls.difficulty_qcm.errors.required">This field is Mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()"
+        [disabled]="!(qcmForm.valid && qcmForm.dirty)">
+        <mat-icon>save</mat-icon> {{action}}
+    </button>
+
+    <button mat-raised-button color="warn" mat-dialog-close>
+        <mat-icon>cancel</mat-icon> Close
+    </button>
+</mat-dialog-actions>

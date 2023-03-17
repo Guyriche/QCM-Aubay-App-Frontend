@@ -33,4 +33,8 @@ export class ThemeService {
   getThemes(){
     return this.httpClient.get(this.url+"/theme/get");
   }
+
+  getThemeById(value:any){
+    return this.httpClient.get(this.url+"/theme/get/"+value);
+  }
 }

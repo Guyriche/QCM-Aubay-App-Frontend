@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="warn">
     <mat-toolbar-row fxLayout="row">
         <span>{{dialogData.action}} Question</span>
         <span class="spacer"></span>
@@ -27,18 +27,29 @@
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Difficulty</mat-label>
-                    <mat-select  formControlName="difficulty" required>
-                        <mat-option value="LOW">LOW</mat-option>
-                        <mat-option value="MEDIUM">MEDIUM</mat-option>
-                        <mat-option value="HIGH">HIGH</mat-option>
-                    </mat-select>
-                    <!--<input matInput formControlName="difficulty" required>-->
-                    <mat-error *ngIf="questionForm.controls.difficulty.touched && questionForm.controls.difficulty.invalid">
-                        <span *ngIf="questionForm.controls.difficulty.errors.required">This field is Mandatory.</span>
-                    </mat-error>
-                </mat-form-field>
+                <div fxLayout="row-wrap">
+                    <mat-form-field appearance="outline" fxFlex>
+                        <mat-label>Difficulty</mat-label>
+                        <mat-select  formControlName="difficulty" required>
+                            <mat-option value="LOW">LOW</mat-option>
+                            <mat-option value="MEDIUM">MEDIUM</mat-option>
+                            <mat-option value="HIGH">HIGH</mat-option>
+                        </mat-select>
+                        <!--<input matInput formControlName="difficulty" required>-->
+                        <mat-error *ngIf="questionForm.controls.difficulty.touched && questionForm.controls.difficulty.invalid">
+                            <span *ngIf="questionForm.controls.difficulty.errors.required">This field is Mandatory.</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" fxFlex>
+                        <mat-label>Themes</mat-label>
+                        <mat-select formControlName="themeId">
+                            <mat-option *ngFor="let theme of themes" [value]="theme.id">
+                                {{theme.wording}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
         </div>
     </form>
 </mat-dialog-content>

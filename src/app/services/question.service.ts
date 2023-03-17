@@ -37,4 +37,12 @@ export class QuestionService {
   getQuestionById(id:any){
     return this.httpClient.get(this.url+"/question/get/"+id);
   }
+
+  getQuestionByThemeId(themeId:any){
+    return this.httpClient.get(this.url+"/question/getQuestionByThemeId/"+themeId);
+  }
+
+  getAllQuestionByQcmId(qcmId:any){
+    return this.httpClient.get(this.url+"/question/getQuestionsByQcmId/get/"+qcmId);
+  }
 }

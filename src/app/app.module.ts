@@ -20,6 +20,7 @@ import { HomeComponent } from './home/home.component';
 import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { NgcCookieConsentModule,  NgcCookieConsentConfig } from 'ngx-cookieconsent';
+import { NgxTranslateModule } from './translate/translate.module';
 
 
 const cookieConfig:NgcCookieConsentConfig = {
@@ -71,7 +72,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SharedModule,
     HttpClientModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
-    NgcCookieConsentModule.forRoot(cookieConfig)
+    NgcCookieConsentModule.forRoot(cookieConfig),
+    NgxTranslateModule
     
   ],
   providers: [HttpClientModule,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorInterceptor,multi:true}],
