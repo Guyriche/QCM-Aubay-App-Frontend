@@ -22,6 +22,7 @@ import { NgxTranslateModule } from '../translate/translate.module';
 import { ManageQcmComponent } from './manage-qcm/manage-qcm.component';
 import { QcmComponent } from './dialog/qcm/qcm.component';
 import { QuestionQcmComponent } from './dialog/question-qcm/question-qcm.component';
+import { ManageUserComponent } from './manage-user/manage-user.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { QuestionQcmComponent } from './dialog/question-qcm/question-qcm.compone
     ChangeLanguageComponent,
     ManageQcmComponent,
     QcmComponent,
-    QuestionQcmComponent
+    QuestionQcmComponent,
+    ManageUserComponent
   ],
   imports: [
     CommonModule,

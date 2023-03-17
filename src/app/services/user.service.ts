@@ -46,4 +46,13 @@ export class UserService {
     return this.httpClient.post(this.url+
       "/user/changePassword", data, httpOptions)
   }
+
+  getUsers(){
+    return this.httpClient.get(this.url+"/user/get");
+  }
+
+  update(data:any){
+    return this.httpClient.post(this.url+
+      "/user/update", data, httpOptions);
+  }
 }

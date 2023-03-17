@@ -14,7 +14,8 @@ const MENUITEMS = [
     {state:'theme', name:'Manage Theme',type:'link', icon:'subtitles', role:'admin'},
     {state:'question', name:'Manage Question',type:'link', icon:'question_answer', role:'admin'},
     {state:'proposition', name:'Manage Q.Response',type:'link', icon:'featured_play_list', role:'admin'},
-    {state:'qcm', name:'Manage QCM',type:'link', icon:'assignment', role:'admin'}
+    {state:'qcm', name:'Manage QCM',type:'link', icon:'assignment', role:'admin'},
+    {state:'user', name:'Manage Users',type:'link', icon:'people', role:'admin'}
 ]
 
 @Injectable()
