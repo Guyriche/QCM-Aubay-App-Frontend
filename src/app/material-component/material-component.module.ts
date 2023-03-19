@@ -23,6 +23,7 @@ import { ManageQcmComponent } from './manage-qcm/manage-qcm.component';
 import { QcmComponent } from './dialog/qcm/qcm.component';
 import { QuestionQcmComponent } from './dialog/question-qcm/question-qcm.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
+import { DetailQcmComponent } from './details/detail-qcm/detail-qcm.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ManageUserComponent } from './manage-user/manage-user.component';
     ManageQcmComponent,
     QcmComponent,
     QuestionQcmComponent,
-    ManageUserComponent
+    ManageUserComponent,
+    DetailQcmComponent
   ],
   imports: [
     CommonModule,

@@ -15,7 +15,7 @@
     <mat-card>
         <mat-form-field appearance="outline" fxFlex>
             <mat-label>Theme</mat-label>
-            <mat-select formControlName="theme" (selectionChange)="getThemeById(id)">
+            <mat-select formControlName="theme" (selectionChange)="getThemeById($event.value)">
                 <mat-option *ngFor="let theme of themes" [value]="theme">
                     {{theme.wording}}
                 </mat-option>

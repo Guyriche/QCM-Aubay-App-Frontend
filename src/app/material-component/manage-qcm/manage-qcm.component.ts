@@ -9,6 +9,7 @@ import { QuestionService } from 'src/app/services/question.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { GlobaConstants } from 'src/app/shared/global-constants';
 import { __values } from 'tslib';
+import { DetailQcmComponent } from '../details/detail-qcm/detail-qcm.component';
 import { ConfirmationComponent } from '../dialog/confirmation/confirmation.component';
 import { QcmComponent } from '../dialog/qcm/qcm.component';
 import { QuestionQcmComponent } from '../dialog/question-qcm/question-qcm.component';
@@ -154,6 +155,22 @@ export class ManageQcmComponent implements OnInit{
 
     dialogConfig.width = "850px";
     const dialogRef = this.dialog.open(QuestionQcmComponent, dialogConfig);
+    this.router.events.subscribe(()=>{
+      this.ngxService.start();
+      dialogRef.close();
+    });
+  }
+
+  handleAddShowDetails(values:any){
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      action: 'Show Detail',
+      data:values
+    };
+
+    dialogConfig.width = "850px";
+    const dialogRef = this.dialog.open(DetailQcmComponent, dialogConfig);
     this.router.events.subscribe(()=>{
       this.ngxService.start();
       dialogRef.close();

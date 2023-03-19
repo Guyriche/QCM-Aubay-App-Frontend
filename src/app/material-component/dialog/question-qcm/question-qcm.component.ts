@@ -49,7 +49,7 @@ export class QuestionQcmComponent implements OnInit{
     this.ngxService.start();
     this.getThemes();
     this.questionQcmForm = this.formBuilder.group({
-      numQuestion:[null, [Validators.required]],
+      num_question:[null, [Validators.required]],
       themeId:[null, [Validators.required]],
       content_question:[null, [Validators.required]],
       difficulty:[null, [Validators.required]]
@@ -122,17 +122,17 @@ export class QuestionQcmComponent implements OnInit{
   }
   
   handleAddQuestionToQcmId(value:any) {
-    
-    var formData = this.questionQcmForm.value;
-    var id = this.dialogData.data.id;
-    var data = {
+    this.ngxService.start();
+    let id = this.dialogData.data.id;
+    let data = {
       id: value.id,
-      numQuestion: formData.numQuestion,
-      themeId: formData.themeId,
-      content_question: formData.content_question,
-      difficulty: formData.difficulty
+      numQuestion: value.num_question,
+      themeId: value.themeId,
+      content_question: value.content_question,
+      difficulty: value.difficulty
     }
-    console.log(data.content_question);
+    //console.log(data);
+    //return;
     this.qcmService.addQuestionIntoQcm(id, data).subscribe({
       next:(response:any)=>{
         this.ngxService.stop();
@@ -143,6 +143,7 @@ export class QuestionQcmComponent implements OnInit{
       }, 
       error:(error)=>{
         this.dialogRef.close();
+        this.ngxService.stop();
         console.log(error);
         if(error.error?.message){
           this.responseMessage = error.error.message;

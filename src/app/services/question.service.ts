@@ -43,6 +43,6 @@ export class QuestionService {
   }
 
   getAllQuestionByQcmId(qcmId:any){
-    return this.httpClient.get(this.url+"/question/getQuestionsByQcmId/get/"+qcmId);
+    return this.httpClient.get(this.url+"/question/getQuestionsByQcmId/"+qcmId);
   }
 }
