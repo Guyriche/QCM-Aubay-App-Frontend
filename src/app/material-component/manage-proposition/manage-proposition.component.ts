@@ -37,6 +37,7 @@ export class ManagePropositionComponent implements OnInit{
   ngOnInit(): void {
     this.ngxService.start();
     this.getQuestions();
+    this.getProposition();
     this.managePropositionForm = this.formBuilder.group({
       question: [null, [Validators.required]]
     })
@@ -47,6 +48,26 @@ export class ManagePropositionComponent implements OnInit{
       next:(response)=>{
         this.ngxService.stop();
         this.questions = response;
+      },
+      error:(error:any)=>{
+        this.ngxService.stop();
+        console.log(error);
+        if(error.error?.message){
+          this.responseMessage = error.error?.message;
+        }
+        else{
+          this.responseMessage = GlobaConstants.genericError;
+        }
+        this.snackbarService.openSnackbar(this.responseMessage, GlobaConstants.error);
+      }
+    })
+  }
+
+  getProposition(){
+    this.propositionService.getProposition().subscribe({
+      next:(response:any)=>{
+        this.ngxService.stop();
+        this.dataSource = new MatTableDataSource(response);
       },
       error:(error:any)=>{
         this.ngxService.stop();

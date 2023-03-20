@@ -1,0 +1,55 @@
+<mat-toolbar color="warn">
+    <mat-toolbar-row fxLayout="row">
+        <span>Proposition</span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+<hr>
+
+<mat-card>
+    <mat-form-field appearance="outline" fxFlex>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+</mat-card>
+<hr>
+
+<mat-dialog-content class="mat-typography">
+    <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="content_proposition">
+            <th mat-header-cell *matHeaderCellDef>Content Proposition</th>
+            <td mat-cell *matCellDef="let element">{{element.content_proposition}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element" class="action-link">
+                <button mat-icon-button color="primary" matTooltip="Add" (click)="handleAddPropositionToQuestionId(element)">
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+        <tr mat-row *matRowDef="let row;Columns:displayedColumns;"></tr>
+    </table>
+
+
+</div>
+
+<hr>
+<button mat-flat-button color="primary" class="float-left" [routerLink]="['/aubaytest/proposition']">
+    <mat-icon>add_circle</mat-icon> Create
+</button>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" mat-dialog-close>
+        <mat-icon>cancel</mat-icon> Close
+    </button>
+</mat-dialog-actions>

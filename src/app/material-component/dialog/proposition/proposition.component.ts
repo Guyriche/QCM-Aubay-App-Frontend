@@ -34,7 +34,6 @@ export class PropositionComponent implements OnInit {
   ngOnInit(): void {
     this.propositionForm = this.formBuilder.group({
       num_proposition:[null, [Validators.required]],
-      questionId:[null, [Validators.required]],
       content_proposition:[null, [Validators.required]],
       status_proposition:[null, [Validators.required]]
     });
@@ -78,12 +77,11 @@ export class PropositionComponent implements OnInit {
     var formData = this.propositionForm.value;
     var data = {
       num_proposition:formData.num_proposition,
-      questionId:formData.questionId,
       content_proposition:formData.content_proposition,
       status_proposition:formData.status_proposition
     }
 
-    this.propositionService.add(data.questionId, data).subscribe({
+    this.propositionService.addProposition(data).subscribe({
       next:(response:any)=>{
         this.dialogRef.close();
         this.onAddProposition.emit();

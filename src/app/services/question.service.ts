@@ -20,6 +20,11 @@ export class QuestionService {
       "/question/add", data, httpOptions)
   }
 
+  addPropositionToQuestion(questionId:any, data:any){
+    return this.httpClient.post(this.url+
+      "/question/"+questionId+"/proposition/add", data, httpOptions)
+  }
+
   update(data:any){
     return this.httpClient.post(this.url +
       "/question/update", data, httpOptions)

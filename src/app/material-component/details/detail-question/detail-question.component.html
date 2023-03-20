@@ -1,0 +1,63 @@
+<mat-toolbar color="warn">
+    <mat-toolbar-row fxLayout="row">
+        <span>Detail Question</span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+    <table class="bordered striped">
+        <tbody>
+            <tr>
+                <td>Num Question : </td>
+                <td><strong>{{data.num_question}}</strong></td>
+            </tr>
+
+            <tr>
+                <td> Content Question : </td>
+                <td><strong>{{data.content_question}}</strong></td>
+            </tr>
+
+            <tr>
+                <td>Qcm Level : </td>
+                <td><strong>{{data.difficulty}}</strong></td>
+            </tr>
+
+            <tr>
+                <td>Theme : </td>
+                <td><strong>{{data.themeId}}</strong></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+
+    <div class="responsive_table">
+        <span>Questions</span>
+        <span class="spacer"></span>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="num_proposition">
+                <th mat-header-cell *matHeaderCellDef>Proposition Number</th>
+                <td mat-cell *matCellDef="let element">{{element.num_proposition}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="content_proposition">
+                <th mat-header-cell *matHeaderCellDef>Proposition Contain</th>
+                <td mat-cell *matCellDef="let element">{{element.content_proposition}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+            <tr mat-row *matRowDef="let row;Columns:displayedColumns;"></tr>
+        </table>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" mat-dialog-close>
+        <mat-icon>cancel</mat-icon> Close
+    </button>
+</mat-dialog-actions>

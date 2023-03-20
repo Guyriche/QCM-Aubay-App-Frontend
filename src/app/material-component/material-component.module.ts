@@ -24,6 +24,8 @@ import { QcmComponent } from './dialog/qcm/qcm.component';
 import { QuestionQcmComponent } from './dialog/question-qcm/question-qcm.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { DetailQcmComponent } from './details/detail-qcm/detail-qcm.component';
+import { QuestionPropositionComponent } from './dialog/question-proposition/question-proposition.component';
+import { DetailQuestionComponent } from './details/detail-question/detail-question.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { DetailQcmComponent } from './details/detail-qcm/detail-qcm.component';
     QcmComponent,
     QuestionQcmComponent,
     ManageUserComponent,
-    DetailQcmComponent
+    DetailQcmComponent,
+    QuestionPropositionComponent,
+    DetailQuestionComponent
   ],
   imports: [
     CommonModule,

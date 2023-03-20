@@ -25,9 +25,9 @@
 
 <div class="responsive_table">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <ng-container matColumnDef="numQuestion">
+        <ng-container matColumnDef="num_question">
             <th mat-header-cell *matHeaderCellDef>Num Question</th>
-            <td mat-cell *matCellDef="let element"> {{element.numQuestion}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.num_question}} </td>
         </ng-container>
 
         <ng-container matColumnDef="content_question">
@@ -49,6 +49,14 @@
 
                 <button mat-icon-button color="primary" matTooltip="Delete" (click)="handleDeleteAction(element)">
                     <mat-icon>delete</mat-icon>
+                </button>
+
+                <button mat-icon-button color="primary" matTooltip="Add Response" (click)="handleAddPropositionsAction(element)">
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+
+                <button mat-icon-button color="primary" matTooltip="Show Detail" (click)="handleAddShowDetails(element)">
+                    <mat-icon>explore</mat-icon>
                 </button>
             </td>
         </ng-container>

@@ -9,7 +9,9 @@ import { QuestionService } from 'src/app/services/question.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { ThemeService } from 'src/app/services/theme.service';
 import { GlobaConstants } from 'src/app/shared/global-constants';
+import { DetailQuestionComponent } from '../details/detail-question/detail-question.component';
 import { ConfirmationComponent } from '../dialog/confirmation/confirmation.component';
+import { QuestionPropositionComponent } from '../dialog/question-proposition/question-proposition.component';
 import { QuestionComponent } from '../dialog/question/question.component';
 import { ManagePropositionComponent } from '../manage-proposition/manage-proposition.component';
 
@@ -21,7 +23,7 @@ import { ManagePropositionComponent } from '../manage-proposition/manage-proposi
 
 export class ManageQuestionComponent implements OnInit{
 
-  displayedColumns: string[] = ['numQuestion', 'content_question', 'difficulty', 'edit'];
+  displayedColumns: string[] = ['num_question', 'content_question', 'difficulty', 'edit'];
   dataSource:any;
   manageQuestionForm:any = FormGroup;
   themes:any = [];
@@ -160,6 +162,36 @@ export class ManageQuestionComponent implements OnInit{
       this.deleteQuestion(values.id);
       dialogRef.close();
     })
+  }
+
+  handleAddPropositionsAction(values:any){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      action: 'Add Response',
+      data:values
+    };
+
+    dialogConfig.width = "850px";
+    const dialogRef = this.dialog.open(QuestionPropositionComponent, dialogConfig);
+    this.router.events.subscribe(()=>{
+      this.ngxService.start();
+      dialogRef.close();
+    });
+  }
+
+  handleAddShowDetails(values:any){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      action: 'Show Detail',
+      data:values
+    };
+
+    dialogConfig.width = "850px";
+    const dialogRef = this.dialog.open(DetailQuestionComponent, dialogConfig);
+    this.router.events.subscribe(()=>{
+      this.ngxService.start();
+      dialogRef.close();
+    });
   }
 
   deleteQuestion(id:any){

@@ -34,15 +34,6 @@
                         <span *ngIf="propositionForm.controls.status_proposition.errors.required">This field is Mandatory.</span>
                     </mat-error>
                 </mat-form-field>
-
-                <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>Select Questions</mat-label>
-                    <mat-select formControlName="questionId" >
-                        <mat-option *ngFor="let question of questions" [value]="question.id">
-                            {{question.content_question}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
         </div>
     </form>
 </mat-dialog-content>
