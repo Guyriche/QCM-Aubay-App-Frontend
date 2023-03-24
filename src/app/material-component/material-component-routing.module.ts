@@ -5,6 +5,7 @@ import { QuestionQcmComponent } from './dialog/question-qcm/question-qcm.compone
 import { ManagePropositionComponent } from './manage-proposition/manage-proposition.component';
 import { ManageQcmComponent } from './manage-qcm/manage-qcm.component';
 import { ManageQuestionComponent } from './manage-question/manage-question.component';
+import { ManageTestComponent } from './manage-test/manage-test.component';
 import { ManageThemeComponent } from './manage-theme/manage-theme.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 
@@ -45,6 +46,14 @@ export const MaterialComponentRoutingModule: Routes = [
     {
         path: 'questionToQcm',
         component: QuestionQcmComponent,
+        canActivate:[RouteGuardService],
+        data:{
+            expectedRole: ['admin']
+        }
+    },
+    {
+        path: 'test',
+        component: ManageTestComponent,
         canActivate:[RouteGuardService],
         data:{
             expectedRole: ['admin']

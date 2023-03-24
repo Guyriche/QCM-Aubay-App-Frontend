@@ -4,51 +4,47 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { QcmService } from 'src/app/services/qcm.service';
-import { QuestionService } from 'src/app/services/question.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
+import { TestService } from 'src/app/services/test.service';
 import { GlobaConstants } from 'src/app/shared/global-constants';
-import { __values } from 'tslib';
-import { DetailQcmComponent } from '../details/detail-qcm/detail-qcm.component';
+import { DetailTestComponent } from '../details/detail-test/detail-test.component';
 import { ConfirmationComponent } from '../dialog/confirmation/confirmation.component';
-import { QcmComponent } from '../dialog/qcm/qcm.component';
-import { QuestionQcmComponent } from '../dialog/question-qcm/question-qcm.component';
+import { QcmTestComponent } from '../dialog/qcm-test/qcm-test.component';
+import { TestComponent } from '../dialog/test/test.component';
 
 @Component({
-  selector: 'app-manage-qcm',
-  templateUrl: './manage-qcm.component.html',
-  styleUrls: ['./manage-qcm.component.css']
+  selector: 'app-manage-test',
+  templateUrl: './manage-test.component.html',
+  styleUrls : ['./manage-test.component.css']
 })
+export class ManageTestComponent implements OnInit{
 
-export class ManageQcmComponent implements OnInit{
-
-  displayedColumns: string[] = ['title_qcm', 'description_qcm','difficulty_qcm','duration_qcm', 'num_qcm', 'edit'];
-  dataSource: any;
-  manageQcmForm:any = FormGroup;
-  questions:any = [];
+  displayedColumns: string[] = ['title_test', 'description_test', 'level', 'edit'];
+  dataSource:any;
+  manageTestForm:any = FormGroup;
+  listQcm:any = [];
   id:any;
-  question:any;
+  qcm:any
 
   responseMessage:any;
 
-  constructor(private qcmService: QcmService,
-    private questionService: QuestionService,
+  constructor(private testService: TestService,
     private formBuilder: FormBuilder,
     private ngxService: NgxUiLoaderService,
-    private dialog: MatDialog,
+    private dialog:MatDialog,
     private snackbarService: SnackbarService,
-    private router: Router,){}
+    private router: Router){}
 
   ngOnInit(): void {
     this.ngxService.start();
     this.tableData();
-    this.manageQcmForm = this.formBuilder.group({
-      question:[null, [Validators.required]]
+    this.manageTestForm = this.formBuilder.group({
+      qcm:[null, [Validators.required]]
     })
   }
 
   tableData() {
-    this.qcmService.getAllQcm().subscribe({
+    this.testService.getAllTest().subscribe({
       next:(response:any)=>{
         this.ngxService.stop();
         this.dataSource = new MatTableDataSource(response);
@@ -78,11 +74,11 @@ export class ManageQcmComponent implements OnInit{
       action: 'Add'
     };
     dialogConfig.width = "850px";
-    const dialogRef = this.dialog.open(QcmComponent, dialogConfig);
+    const dialogRef = this.dialog.open(TestComponent, dialogConfig);
     this.router.events.subscribe(()=>{
       dialogRef.close();
     });
-    const sub = dialogRef.componentInstance.onAddQcm.subscribe((response)=>{
+    const sub = dialogRef.componentInstance.onAddTest.subscribe((response)=>{
       this.tableData();
     })
   }
@@ -95,11 +91,11 @@ export class ManageQcmComponent implements OnInit{
     };
     this.id = dialogConfig.data.id
     dialogConfig.width = "850px";
-    const dialogRef = this.dialog.open(QcmComponent, dialogConfig);
+    const dialogRef = this.dialog.open(TestComponent, dialogConfig);
     this.router.events.subscribe(()=>{
       dialogRef.close();
     });
-    const sub = dialogRef.componentInstance.onEditQcm.subscribe((response)=>{
+    const sub = dialogRef.componentInstance.onEditTest.subscribe((response)=>{
       this.tableData();
     })
   }
@@ -107,20 +103,20 @@ export class ManageQcmComponent implements OnInit{
   handleDeleteAction(values:any){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
-      message:'delete' + values.title_qcm + 'QCM',
+      message:'delete' + values.title_test + 'Test',
       confirmation:true
     }
 
     const dialogRef = this.dialog.open(ConfirmationComponent, dialogConfig);
     const sub = dialogRef.componentInstance.onEmitStatusChange.subscribe(()=>{
       this.ngxService.start();
-      this.deleteQcm(values.id);
+      this.deleteTest(values.id);
       dialogRef.close();
     })
   }
 
-  deleteQcm(id: any) {
-    this.qcmService.deleteQcm(id).subscribe({
+  deleteTest(id: any) {
+    this.testService.deleteTest(id).subscribe({
       next:(response:any)=>{
         this.ngxService.stop();
         this.tableData();
@@ -141,11 +137,7 @@ export class ManageQcmComponent implements OnInit{
     })
   }
 
-  handleShowAction(value:any){
-
-  }
-
-  handleAddQuestionsAction(values:any){
+  handleAddQcmAction(values:any){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       action: 'Add',
@@ -153,7 +145,7 @@ export class ManageQcmComponent implements OnInit{
     };
 
     dialogConfig.width = "850px";
-    const dialogRef = this.dialog.open(QuestionQcmComponent, dialogConfig);
+    const dialogRef = this.dialog.open(QcmTestComponent, dialogConfig);
     this.router.events.subscribe(()=>{
       this.ngxService.start();
       dialogRef.close();
@@ -169,7 +161,7 @@ export class ManageQcmComponent implements OnInit{
     };
 
     dialogConfig.width = "850px";
-    const dialogRef = this.dialog.open(DetailQcmComponent, dialogConfig);
+    const dialogRef = this.dialog.open(DetailTestComponent, dialogConfig);
     this.router.events.subscribe(()=>{
       this.ngxService.start();
       dialogRef.close();

@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Configuration } from 'src/environments/environment';
 
-
 const httpOptions = {
   headers: new HttpHeaders().set( 'Content-Type', 'application/json' )
 };
@@ -10,41 +9,37 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class QcmService {
+export class TestService {
 
   url = Configuration.apiUrl;
 
   constructor(private httpClient: HttpClient) { }
 
-  addNewQcm(data:any){
+  add(data:any){
     return this.httpClient.post(this.url + 
-      "/qcm/add", data, httpOptions);
+      "/test/add", data, httpOptions);
   }
 
-  addQuestionIntoQcm(qcmId:any, data:any){
+  addQcmToTest(testId:any, data:any){
     return this.httpClient.post(this.url + 
-      "/qcm/question/" + qcmId + "/add", data, httpOptions);
+      "/test/qcm/" + testId + "/add", data, httpOptions);
   }
 
-  updateQcm(data:any){
+  update(data:any){
     return this.httpClient.post(this.url + 
-      "/qcm/update", data, httpOptions);
+      "/test/update", data, httpOptions);
   }
 
-  getAllQcm(){
-    return this.httpClient.get(this.url+"/qcm/get");
+  getAllTest(){
+    return this.httpClient.get(this.url+"/test/get");
   }
 
-  getQcmById(id:any){
-    return this.httpClient.get(this.url+"/qcm/get/"+id);
+  getTestById(id:any){
+    return this.httpClient.get(this.url+"/test/get"+id);
   }
 
-  getAllQcmByTestId(testId:any){
-    return this.httpClient.get(this.url+"/qcm/getAllQcmByTestId/"+testId);
-  }
-
-  deleteQcm(data:any){
+  deleteTest(data:any){
     return this.httpClient.post(this.url + 
-      "/qcm/delete/"+ data, data,httpOptions);
+      "/test/delete/"+data, data, httpOptions);
   }
 }

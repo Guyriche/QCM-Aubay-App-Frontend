@@ -1,0 +1,66 @@
+<mat-toolbar color="warn">
+    <mat-toolbar-row fxLayout="row">
+        <span>{{dialogData.action}} Test</span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="testForm">
+        <div class="form-group" fxLayout="column">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Test Title</mat-label>
+                    <input matInput formControlName="title_test" required>
+                    <mat-error *ngIf="testForm.controls.title_test.touched && testForm.controls.title_test.invalid">
+                        <span *ngIf="testForm.controls.title_test.errors.required">This field is Mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Test Description</mat-label>
+                    <input matInput formControlName="description_test" required>
+                    <mat-error *ngIf="testForm.controls.description_test.touched && testForm.controls.description_test.invalid">
+                        <span *ngIf="testForm.controls.description_test.errors.required">This field is Mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <div fxLayout="row-wrap">
+                    <mat-form-field appearance="outline" fxFlex>
+                        <mat-label>Level</mat-label>
+                        <mat-select  formControlName="level" required>
+                            <mat-option value="JUNIOR">JUNIOR</mat-option>
+                            <mat-option value="MEDIUM">MEDIUM</mat-option>
+                            <mat-option value="EXPERT">EXPERT</mat-option>
+                        </mat-select>
+                        <!--<input matInput formControlName="difficulty" required>-->
+                        <mat-error *ngIf="testForm.controls.level.touched && testForm.controls.level.invalid">
+                            <span *ngIf="testForm.controls.level.errors.required">This field is Mandatory.</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" fxFlex>
+                        <mat-label>Themes</mat-label>
+                        <mat-select formControlName="themeId">
+                            <mat-option *ngFor="let theme of themes" [value]="theme.id">
+                                {{theme.wording}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()"
+        [disabled]="!(testForm.valid && testForm.dirty)">
+        <mat-icon>save</mat-icon> {{action}}
+    </button>
+
+    <button mat-raised-button color="warn" mat-dialog-close>
+        <mat-icon>cancel</mat-icon> Close
+    </button>
+</mat-dialog-actions>

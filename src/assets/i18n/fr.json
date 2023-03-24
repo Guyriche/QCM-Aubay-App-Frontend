@@ -81,6 +81,8 @@
         "theme":"Themes Totals :",
         "question": "Questions Totales :",
         "qcm": "Total Qcm:",
+        "test": "Total Test",
+        "user": "Utilisateur",
         "submit": "Voir"
     }
 }

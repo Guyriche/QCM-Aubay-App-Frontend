@@ -1,0 +1,43 @@
+<mat-toolbar color="warn">
+    <mat-toolbar-row fxLayout="row">
+        <span>Test</span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+    <span>Current Test</span>
+    <span class="spacer"></span>
+    <hr>
+
+    <div class="responsive_table">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="title_qcm">
+                <th mat-header-cell *matHeaderCellDef>Tttle Qcm</th>
+                <td mat-cell *matCellDef="let element">{{element.title_qcm}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef>Action</th>
+                <td mat-cell *matCellDef="let element" class="action-link">
+                    <button mat-icon-button color="primary" matTooltip="Add" (click)="handleAddQcmToTest(element)">
+                        <mat-icon>add_circle</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+            <tr mat-row *matRowDef="let row;Columns:displayedColumns;"></tr>
+        </table>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" mat-dialog-close>
+        <mat-icon>cancel</mat-icon> Close
+    </button>
+</mat-dialog-actions>

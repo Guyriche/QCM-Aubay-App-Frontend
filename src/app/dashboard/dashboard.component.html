@@ -33,6 +33,26 @@
                     </div>
                 </div>
             </div>
+
+            <div class="column">
+                <div class="card">
+                    <div class="container">
+                        <h2 class="title">{{ "dashboard.test" | translate }}</h2>
+                        <h2 class="title">{{data?.test}}</h2>
+                        <p><button class="button" [routerLink]="['/aubaytest/test']">{{ "dashboard.submit" | translate }}</button></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <div class="container">
+                        <h2 class="title">{{ "dashboard.user" | translate }}</h2>
+                        <h2 class="title">{{data?.user}}</h2>
+                        <p><button class="button" [routerLink]="['/aubaytest/user']">{{ "dashboard.submit" | translate }}</button></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </b>
 </body>

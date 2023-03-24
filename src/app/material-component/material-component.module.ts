@@ -26,6 +26,10 @@ import { ManageUserComponent } from './manage-user/manage-user.component';
 import { DetailQcmComponent } from './details/detail-qcm/detail-qcm.component';
 import { QuestionPropositionComponent } from './dialog/question-proposition/question-proposition.component';
 import { DetailQuestionComponent } from './details/detail-question/detail-question.component';
+import { ManageTestComponent } from './manage-test/manage-test.component';
+import { QcmTestComponent } from './dialog/qcm-test/qcm-test.component';
+import { TestComponent } from './dialog/test/test.component';
+import { DetailTestComponent } from './details/detail-test/detail-test.component';
 
 
 @NgModule({
@@ -45,7 +49,11 @@ import { DetailQuestionComponent } from './details/detail-question/detail-questi
     ManageUserComponent,
     DetailQcmComponent,
     QuestionPropositionComponent,
-    DetailQuestionComponent
+    DetailQuestionComponent,
+    ManageTestComponent,
+    QcmTestComponent,
+    TestComponent,
+    DetailTestComponent
   ],
   imports: [
     CommonModule,

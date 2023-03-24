@@ -81,6 +81,8 @@
         "theme":"Total Theme:",
         "question": "Total Question:",
         "qcm": "Total Qcm:",
+        "test": "Total Test",
+        "user": "User",
         "submit": "View"
     }
 
