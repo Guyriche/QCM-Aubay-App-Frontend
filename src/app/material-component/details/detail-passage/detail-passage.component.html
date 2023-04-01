@@ -1,0 +1,73 @@
+<mat-toolbar color="warn">
+    <mat-toolbar-row fxLayout="row">
+        <span>Detail Passage</span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+    <table class="bordered striped">
+        <tbody>
+            <tr>
+                <td>Reférence : </td>
+                <td><strong>{{data.ref}}</strong></td>
+            </tr>
+
+            <tr>
+                <td> Date Creation : </td>
+                <td><strong>{{data.date_creation}}</strong></td>
+            </tr>
+
+            <tr>
+                <td>Date  Expiration : </td>
+                <td><strong>{{data.date_expiration}}</strong></td>
+            </tr>
+
+            <tr>
+                <td>Score : </td>
+                <td><strong>{{data.score}}</strong></td>
+            </tr>
+
+            <tr>
+                <td>Candidate : </td>
+                <td><strong>{{data.candidate}}</strong></td>
+            </tr>
+
+            <tr>
+                <td>Status : </td>
+                <td><strong>{{data.status_passage}}</strong></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+
+    <div class="responsive_table">
+        <span>List Of Qcm</span>
+        <span class="spacer"></span>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="title_test">
+                <th mat-header-cell *matHeaderCellDef>Test Title</th>
+                <td mat-cell *matCellDef="let element">{{element.title_test}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="description_test">
+                <th mat-header-cell *matHeaderCellDef>Test Description</th>
+                <td mat-cell *matCellDef="let element">{{element.description_test}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+            <tr mat-row *matRowDef="let row;Columns:displayedColumns;"></tr>
+        </table>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" mat-dialog-close>
+        <mat-icon>cancel</mat-icon> Close
+    </button>
+</mat-dialog-actions>

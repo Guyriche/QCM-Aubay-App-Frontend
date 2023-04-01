@@ -16,6 +16,7 @@ const MENUITEMS = [
     {state:'proposition', name:'Manage Q.Response',type:'link', icon:'featured_play_list', role:'admin'},
     {state:'qcm', name:'Manage QCM',type:'link', icon:'assignment', role:'admin'},
     {state:'test', name:'Manage Test',type:'link', icon:'collections_bookmark', role:'admin'},
+    {state:'passage', name:'Manage Passage',type:'link', icon:'event_available', role:'admin'},
     {state:'user', name:'Manage Users',type:'link', icon:'people', role:'admin'}
 ]
 

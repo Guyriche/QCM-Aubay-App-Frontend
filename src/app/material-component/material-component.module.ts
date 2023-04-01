@@ -30,6 +30,10 @@ import { ManageTestComponent } from './manage-test/manage-test.component';
 import { QcmTestComponent } from './dialog/qcm-test/qcm-test.component';
 import { TestComponent } from './dialog/test/test.component';
 import { DetailTestComponent } from './details/detail-test/detail-test.component';
+import { PassageComponent } from './dialog/passage/passage.component';
+import { ManagePassageComponent } from './manage-passage/manage-passage.component';
+import { TestPassageComponent } from './dialog/test-passage/test-passage.component';
+import { DetailPassageComponent } from './details/detail-passage/detail-passage.component';
 
 
 @NgModule({
@@ -53,7 +57,11 @@ import { DetailTestComponent } from './details/detail-test/detail-test.component
     ManageTestComponent,
     QcmTestComponent,
     TestComponent,
-    DetailTestComponent
+    DetailTestComponent,
+    PassageComponent,
+    ManagePassageComponent,
+    TestPassageComponent,
+    DetailPassageComponent
   ],
   imports: [
     CommonModule,

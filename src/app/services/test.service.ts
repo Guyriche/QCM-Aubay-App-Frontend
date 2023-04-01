@@ -38,6 +38,14 @@ export class TestService {
     return this.httpClient.get(this.url+"/test/get"+id);
   }
 
+  getTestByThemeId(themeId:any){
+    return this.httpClient.get(this.url+ "/test/getTestByThemeId/"+themeId);
+  }
+
+  getAllTestByPassageId(passageId:any){
+    return this.httpClient.get(this.url+"/test/getAllTestByPassageId/"+passageId);
+  }
+
   deleteTest(data:any){
     return this.httpClient.post(this.url + 
       "/test/delete/"+data, data, httpOptions);

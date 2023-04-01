@@ -1,0 +1,53 @@
+<mat-toolbar color="warn">
+    <mat-toolbar-row fxLayout="row">
+        <span>{{dialogData.action}} Passage</span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="passageForm">
+        <div class="form-group" fxLayout="column">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Reférence</mat-label>
+                    <input matInput formControlName="ref" required>
+                    <mat-error *ngIf="passageForm.controls.ref.touched && passageForm.controls.ref.invalid">
+                        <span *ngIf="passageForm.controls.ref.errors.required">This field is Mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Date Expiration</mat-label>
+                    <input matInput formControlName="date_expiration" required>
+                    <mat-error *ngIf="passageForm.controls.date_expiration.touched && passageForm.controls.date_expiration.invalid">
+                        <span *ngIf="passageForm.controls.date_expiration.errors.required">This field is Mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <div fxLayout="row-wrap">
+                    <mat-form-field appearance="outline" fxFlex>
+                        <mat-label>Candidate</mat-label>
+                        <input matInput formControlName="candidate" required>
+                        <!--<input matInput formControlName="difficulty" required>-->
+                        <mat-error *ngIf="passageForm.controls.candidate.touched && passageForm.controls.candidate.invalid">
+                            <span *ngIf="passageForm.controls.candidate.errors.required">This field is Mandatory.</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()"
+        [disabled]="!(passageForm.valid && passageForm.dirty)">
+        <mat-icon>save</mat-icon> {{action}}
+    </button>
+
+    <button mat-raised-button color="warn" mat-dialog-close>
+        <mat-icon>cancel</mat-icon> Close
+    </button>
+</mat-dialog-actions>

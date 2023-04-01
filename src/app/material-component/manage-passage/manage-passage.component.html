@@ -1,0 +1,68 @@
+<mat-card>
+    <b><span>Manage Passage</span></b>
+    <button mat-flat-button color="primary" class="float-right" (click)="handleAddAction()">
+        <mat-icon>add_circle</mat-icon> New Passage
+    </button>
+</mat-card>
+<hr>
+
+<mat-card>
+    <mat-form-field appearance="outline" fxFlex>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+</mat-card>
+<hr>
+
+<div class="responsive_table">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="ref">
+            <th mat-header-cell *matHeaderCellDef>Ref</th>
+            <td mat-cell *matCellDef="let element">{{element.ref}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="date_creation">
+            <th mat-header-cell *matHeaderCellDef>Date Creation</th>
+            <td mat-cell *matCellDef="let element">{{element.date_creation}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="candidate">
+            <th mat-header-cell *matHeaderCellDef>Candidate</th>
+            <td mat-cell *matCellDef="let element">{{element.candidate}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="score">
+            <th mat-header-cell *matHeaderCellDef>Score</th>
+            <td mat-cell *matCellDef="let element">{{element.score}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status_passage">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">{{element.status_passage}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element" class="action-link">
+                <button mat-icon-button color="primary" matTooltip="Edit" (click)="handleEditAction(element)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+
+                <button mat-icon-button color="primary" matTooltip="Delete" (click)="handleDeleteAction(element)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+
+                <button mat-icon-button color="primary" matTooltip="Add Test" (click)="handleAddQcmAction(element)">
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+
+                <button mat-icon-button color="primary" matTooltip="Show Detail" (click)="handleAddShowDetails(element)">
+                    <mat-icon>explore</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+        <tr mat-row *matRowDef="let row;Columns:displayedColumns;"></tr>
+    </table>
+</div>

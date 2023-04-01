@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RouteGuardService } from '../services/route-guard.service';
 import { QuestionQcmComponent } from './dialog/question-qcm/question-qcm.component';
+import { ManagePassageComponent } from './manage-passage/manage-passage.component';
 import { ManagePropositionComponent } from './manage-proposition/manage-proposition.component';
 import { ManageQcmComponent } from './manage-qcm/manage-qcm.component';
 import { ManageQuestionComponent } from './manage-question/manage-question.component';
@@ -62,6 +63,14 @@ export const MaterialComponentRoutingModule: Routes = [
     {
         path: 'user',
         component: ManageUserComponent,
+        canActivate:[RouteGuardService],
+        data:{
+            expectedRole: ['admin']
+        }
+    },
+    {
+        path: 'passage',
+        component: ManagePassageComponent,
         canActivate:[RouteGuardService],
         data:{
             expectedRole: ['admin']
