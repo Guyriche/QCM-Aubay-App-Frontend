@@ -34,6 +34,8 @@ import { PassageComponent } from './dialog/passage/passage.component';
 import { ManagePassageComponent } from './manage-passage/manage-passage.component';
 import { TestPassageComponent } from './dialog/test-passage/test-passage.component';
 import { DetailPassageComponent } from './details/detail-passage/detail-passage.component';
+import { ManageQuizComponent } from './manage-quiz/manage-quiz.component';
+import { ShowQcmComponent } from './dialog/show-qcm/show-qcm.component';
 
 
 @NgModule({
@@ -61,7 +63,9 @@ import { DetailPassageComponent } from './details/detail-passage/detail-passage.
     PassageComponent,
     ManagePassageComponent,
     TestPassageComponent,
-    DetailPassageComponent
+    DetailPassageComponent,
+    ManageQuizComponent,
+    ShowQcmComponent,
   ],
   imports: [
     CommonModule,

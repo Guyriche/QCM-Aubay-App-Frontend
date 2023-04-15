@@ -1,0 +1,19 @@
+<body>
+    <mat-card>
+        <b><h1 class="center">LIST OF TESTS</h1></b>
+    </mat-card>
+
+    <b>
+        <div class="row">
+            <div *ngFor="let test of tests" class="column">
+                <div class="card">
+                    <div class="container">
+                        <h2 class="title">{{test.title_test}}</h2>
+                        <h2 class="title">{{test.description_test}}</h2>
+                        <p><button class="button" (click)="handleSubmit(test)">submit</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </b>
+</body>

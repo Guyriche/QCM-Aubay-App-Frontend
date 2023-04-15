@@ -1,0 +1,20 @@
+<mat-toolbar color="warn">
+    <mat-toolbar-row fxLayout="row">
+        <span>{{dialogData.action}} LIST OF QCM</span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+    <mat-list>
+        <mat-list-item *ngFor="let qcm of listQcm">
+            <a matListItemTitle href="#">{{qcm.title_qcm}}</a>
+            <button mat-icon-button color="primary" matListItemMeta matTooltip="Start"  type="submit" (click)="gotoQuiz(qcm.id)">
+               <mat-icon>start</mat-icon>
+            </button>
+        </mat-list-item>
+      </mat-list>
+</mat-dialog-content>

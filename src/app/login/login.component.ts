@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from '../forgot-password/forgot-password.comp
 import { SnackbarService } from '../services/snackbar.service';
 import { UserService } from '../services/user.service';
 import { GlobaConstants } from '../shared/global-constants';
+import jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
   loginForm:any = FormGroup;
   responseMessage:any;
 
+  tokenPayload:any; 
   constructor(
     private formBuilder: FormBuilder,
     private router:Router,
@@ -49,9 +51,22 @@ export class LoginComponent implements OnInit {
         this.ngxService.stop();
         this.dialogRef.close();
         localStorage.setItem('token', response.token);
-        this.router.navigate(['/aubaytest/dashboard']).then((nav)=>{
-          console.log(nav)
-        });
+        try{
+          this.tokenPayload = jwt_decode(response.token);
+        }catch(err){
+          localStorage.clear();
+          this.router.navigate(['/']);
+        }
+        if(this.tokenPayload.role == 'admin'){
+          this.router.navigate(['/aubaytest/dashboard']).then((nav)=>{
+            console.log(nav)
+          });
+        }else{
+          this.router.navigate(['/aubaytest/quiz']).then((nav)=>{
+            console.log(nav)
+          });
+        }
+        
       },
       error: (error)=>{
         this.ngxService.stop();

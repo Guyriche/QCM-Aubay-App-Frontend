@@ -11,6 +11,7 @@ export interface Menu{
 
 const MENUITEMS = [
     {state:'dashboard', name:'Dashboard QCM Management',type:'link', icon:'dashboard', role:''},
+    {state:'quiz', name:'Quiz',type:'link', icon:'question_answer', role:'admin'},
     {state:'theme', name:'Manage Theme',type:'link', icon:'subtitles', role:'admin'},
     {state:'question', name:'Manage Question',type:'link', icon:'question_answer', role:'admin'},
     {state:'proposition', name:'Manage Q.Response',type:'link', icon:'featured_play_list', role:'admin'},

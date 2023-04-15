@@ -1,79 +1,55 @@
 import { Component, OnInit, Inject} from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { PassageService } from 'src/app/services/passage.service';
+import { QcmService } from 'src/app/services/qcm.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { TestService } from 'src/app/services/test.service';
 import { GlobaConstants } from 'src/app/shared/global-constants';
+import { ShowQcmComponent } from '../dialog/show-qcm/show-qcm.component';
 
 @Component({
-  selector: 'app-detail-passage',
-  templateUrl: './detail-passage.component.html',
-  styleUrls: ['./detail-passage.component.css']
+  selector: 'app-manage-quiz',
+  templateUrl: './manage-quiz.component.html',
+  styleUrls: ['./manage-quiz.component.css']
 })
 
-export class DetailPassageComponent implements OnInit{
-
-  displayedColumns: string[] = ['title_test', 'description_test'];
-  dataSource:any;
-  data:any;
-  manageDetailPassageForm:any = FormGroup;
-  test:any;
-  id:any;
+export class ManageQuizComponent implements OnInit{
 
   responseMessage:any;
+  dataSource:any;
+	tests:any = [];
+  qcm:any = [];
+  passageId:any;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public dialogData:any,
-  public dialogRef: MatDialogRef<DetailPassageComponent>,
-  private testService: TestService,
+  constructor(
   private passageService: PassageService,
+  private testService: TestService,
+  private qcmService: QcmService,
+  private ngxService: NgxUiLoaderService, 
   private snackbarService: SnackbarService,
-  private ngxService: NgxUiLoaderService,
-  private router: Router
+  private router: Router,
+  private dialog: MatDialog,
   ){}
 
   ngOnInit(): void {
+    this.passageId = history.state;
+    console.log(history.state.data);
     this.ngxService.start();
-    this.data = this.dialogData.data;
-    this.id = this.data.id;
-    this.getDetailPassageById(this.data.id);
+    this.tableDataQuiz(this.passageId.data);
   }
 
-  gotoManageQuiz(){
-    /*this.passageService.sendPassage(this.data).subscribe({
+  tableDataQuiz(value:any) {
+    this.testService.getAllTestByPassageId(value).subscribe({
       next:(response:any)=>{
         this.ngxService.stop();
-        this.responseMessage = response.message;
-        this.router.navigate(['/aubaytest/quiz'], {state: {data: this.id}});
+        this.tests = response;
       },
       error:(error:any)=>{
         this.ngxService.stop();
-        console.log(error.error?.message);
-        if(error.error?.message){
-          this.responseMessage = error.error?.message;
-        }
-        else{
-          this.responseMessage = GlobaConstants.genericError;
-        }
-        this.snackbarService.openSnackbar(this.responseMessage, GlobaConstants.error);
-      }
-    })*/
-    this.router.navigate(['/aubaytest/quiz'], {state: {data: this.id}});
-    
-  }
-
-  getDetailPassageById(id: any) {
-    this.testService.getAllTestByPassageId(id).subscribe({
-      next:(response:any)=>{
-        this.ngxService.stop();
-        this.dataSource = new MatTableDataSource(response);
-      },
-      error:(error:any)=>{
-        this.ngxService.stop();
-        console.log(error.error?.message);
+        console.log(error);
         if(error.error?.message){
           this.responseMessage = error.error?.message;
         }
@@ -85,8 +61,40 @@ export class DetailPassageComponent implements OnInit{
     })
   }
 
-  handleSubmit(){
-    
+  handleSubmit(values:any){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      data:values
+    };
+
+    dialogConfig.width = "850px";
+    const dialogRef = this.dialog.open(ShowQcmComponent, dialogConfig);
+    this.router.events.subscribe(()=>{
+      this.ngxService.start();
+      dialogRef.close();
+    });
   }
+
+  /*tablegetAllQcm(){
+    let id = this.dialogData.data.id;
+    this.qcmService.getAllQcmByTestId(id).subscribe({
+      next:(response:any)=>{
+        this.ngxService.stop();
+        this.qcm = response;
+        this.dataSource = new MatTableDataSource(response);
+      },
+      error:(error:any)=>{
+        this.ngxService.stop();
+        console.log(error);
+        if(error.error?.message){
+          this.responseMessage = error.error?.message;
+        }
+        else{
+          this.responseMessage = GlobaConstants.genericError;
+        }
+        this.snackbarService.openSnackbar(this.responseMessage, GlobaConstants.error);
+      }
+    })
+  }*/
 
 }

@@ -48,4 +48,9 @@ export class PassageService {
     return this.httpClient.post(this.url + 
       "/passage/delete/"+data, data, httpOptions);
   }
+
+  sendPassage(data:any){
+    return this.httpClient.post(this.url + 
+      "/passage/sendPassage", data, httpOptions);
+  }
 }

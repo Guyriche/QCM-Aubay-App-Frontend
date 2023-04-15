@@ -21,12 +21,20 @@ const routes: Routes = [
           () => import('./material-component/material-component.module').then(m => m.MaterialComponentModule),
         canActivate:[RouteGuardService],
         data: {
-          expectedRole: ['admin', 'user']
+          expectedRole: ['admin']
         }
       },
       {
         path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+        canActivate:[RouteGuardService],
+        data: {
+          expectedRole: ['admin', 'user']
+        }
+      },
+      {
+        path: 'startquiz',
+        loadChildren: ()=> import('./start-quiz/start-quiz.module').then(m => m.StartQuizModule),
         canActivate:[RouteGuardService],
         data: {
           expectedRole: ['admin', 'user']

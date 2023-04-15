@@ -21,6 +21,8 @@ import { TokenInterceptorInterceptor } from './services/token-interceptor.interc
 import { SharedModule } from './shared/shared.module';
 import { NgcCookieConsentModule,  NgcCookieConsentConfig } from 'ngx-cookieconsent';
 import { NgxTranslateModule } from './translate/translate.module';
+import { StartQuizComponent } from './start-quiz/start-quiz.component';
+import { ChangeBgDirective } from './directives/change-bg.directive';
 
 
 const cookieConfig:NgcCookieConsentConfig = {
@@ -59,7 +61,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ForgotPasswordComponent,
     FullComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    ChangeBgDirective
   ],
   imports: [
     BrowserModule,

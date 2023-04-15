@@ -169,4 +169,8 @@ export class ManagePassageComponent implements OnInit{
     });
   }
 
+  handleSendQuiz(value:any){
+    
+  }
+
 }

@@ -6,6 +6,7 @@ import { ManagePassageComponent } from './manage-passage/manage-passage.componen
 import { ManagePropositionComponent } from './manage-proposition/manage-proposition.component';
 import { ManageQcmComponent } from './manage-qcm/manage-qcm.component';
 import { ManageQuestionComponent } from './manage-question/manage-question.component';
+import { ManageQuizComponent } from './manage-quiz/manage-quiz.component';
 import { ManageTestComponent } from './manage-test/manage-test.component';
 import { ManageThemeComponent } from './manage-theme/manage-theme.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
@@ -71,6 +72,14 @@ export const MaterialComponentRoutingModule: Routes = [
     {
         path: 'passage',
         component: ManagePassageComponent,
+        canActivate:[RouteGuardService],
+        data:{
+            expectedRole: ['admin']
+        }
+    },
+    {
+        path: 'quiz',
+        component: ManageQuizComponent,
         canActivate:[RouteGuardService],
         data:{
             expectedRole: ['admin']
